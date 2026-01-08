@@ -2,6 +2,25 @@ const ADMIN_PASSWORD = "Johnny2018";
 const exchangeRate = 150;
 const telegramUsername = "https://t.me/JohnYoEt";
 
+// Add this at the very top of your script.js
+const sitePath = window.location.pathname.includes('shope') ? '/shope/' : '/';
+
+// Update your image rendering in renderProducts()
+filtered.forEach(p => {
+    // This ensures images load correctly on GitHub Pages sub-folders
+    const imgPath = p.img.startsWith('http') ? p.img : `images/${p.img}`;
+    
+    grid.innerHTML += `
+        <div class="product-card">
+            <img src="${imgPath}" onerror="this.src='https://via.placeholder.com/150'">
+            <h3>${translations[lang][p.i18nKey]}</h3>
+            <button onclick="addToCart(${p.id})">Add to Cart</button>
+        </div>`;
+});
+
+
+
+
 let cart = [];
 let currentCategory = 'all';
 let searchQuery = "";
@@ -180,4 +199,5 @@ function renderProducts() {
                 <button onclick="addToCart(${p.id})">${translations[lang].addToCart}</button>
             </div>`;
     });
+
 }
