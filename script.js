@@ -8,7 +8,7 @@ let searchQuery = "";
 
 const products = [
     { id: 1, usdPrice: 400, i18nKey: "p1", category: "phones", img: "phone.jpg" },
-    { id: 2, usdPrice: 900, i18nKey: "p2", category: "laptops", img: "./images/laptop.jpg" }
+    { id: 2, usdPrice: 900, i18nKey: "p2", category: "laptops", img: "./laptop.jpg" }
 ];
 
 const translations = {
@@ -84,6 +84,7 @@ translations.am.aboutTitle = "ስለ እኛ";
 translations.am.aboutBody = "በአዲስ አበባ እምብርት የሚገኘው ድርጅታችን ኦሪጅናል ስልኮችን፣ ላፕቶፖችን እና መለዋወጫዎችን ለደንበኞቻችን በማቅረብ ይታወቃል። ጥራት ያላቸውን የቴክኖሎጂ ውጤቶች በተመጣጣኝ ዋጋ እና ፈጣን በሆነ አቅርቦት ማድረስ ዋነኛ ዓላማችን ነው።";
 translations.am.statYears = "የታማኝነት ዓመታት";
 translations.am.statClients = "ረክተው የተገበያዩ ደንበኞች";
+
 
 
 
