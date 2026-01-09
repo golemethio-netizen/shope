@@ -22,47 +22,12 @@
                 <button onclick="changeLanguage('en')">EN</button>
                 <button onclick="changeLanguage('am')">አማርኛ</button>
             </div>
-            <button id="theme-toggle" onclick="toggleDarkMode()"><span id="theme-icon">🌙</span></button>
+            <button id="theme-toggle" onclick="toggleDarkMode()">🌙</button>
             <div class="cart-status">
                 <span data-i18n="cart">Cart</span>: <span id="cart-count">0</span>
             </div>
         </div>
     </nav>
-
-<div class="payment-methods">
-    <h4 data-i18n="paymentTitle">Accepted Payments / የክፍያ አማራጮች</h4>
-    <div class="payment-icons">
-        <div class="pay-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Telebirr_logo.png" alt="Telebirr" onerror="this.src='https://via.placeholder.com/40?text=TB'">
-            <span>Telebirr</span>
-        </div>
-        <div class="pay-item">
-            <img src="https://www.combanketh.et/img/logo.png" alt="CBE" onerror="this.src='https://via.placeholder.com/40?text=CBE'">
-            <span>CBE Birr</span>
-        </div>
-        <div class="pay-item">
-            <img src="https://logowik.com/content/uploads/images/t_mobile-money5856.logowik.com.webp" alt="M-Pesa" onerror="this.src='https://via.placeholder.com/40?text=MP'">
-            <span>M-Pesa</span>
-        </div>
-    </div>
-</div>
-
-<div id="admin-dashboard" style="display:none;">
-    <h3>Add New Product / አዲስ ዕቃ ይጨምሩ</h3>
-    <form id="add-product-form" onsubmit="handleNewProduct(event)">
-        <input type="text" id="new-p-name-en" placeholder="Product Name (English)" required>
-        <input type="text" id="new-p-name-am" placeholder="የዕቃው ስም (በአማርኛ)" required>
-        <input type="number" id="new-p-price" placeholder="Price in USD ($)" required>
-        <select id="new-p-category">
-            <option value="phones">Phones</option>
-            <option value="laptops">Laptops</option>
-        </select>
-        <input type="text" id="new-p-img" placeholder="Image Filename (e.g., galaxy.jpg)">
-        <button type="submit" class="filter-btn active">Add Product / ዕቃውን ጨምር</button>
-    </form>
-</div>
-
-
 
     <div class="search-filter-bar">
         <input type="text" id="product-search" data-i18n-placeholder="searchPlaceholder" placeholder="Search..." oninput="handleSearch()">
@@ -77,57 +42,67 @@
 
     <section id="order-section">
         <h2 data-i18n="orderTitle">Order Details</h2>
-        <form id="contact-form" name="orders" data-netlify="true" action="/success.html" onsubmit="handleFormSubmit(event)">
-            <input type="hidden" name="form-name" value="orders">
-            <input type="text" name="customer_name" id="customer-name" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
-            <input type="text" name="location" id="customer-location" data-i18n-placeholder="locPlaceholder" placeholder="Delivery Location" required>
-            <input type="hidden" name="order_items" id="hidden-items-input">
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            <input type="text" id="customer-name" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
+            <input type="text" id="customer-location" data-i18n-placeholder="locPlaceholder" placeholder="Delivery Location" required>
+            <input type="hidden" id="hidden-items-input">
             <div id="order-summary"></div>
-            <button type="submit" id="telegram-btn">
+            <button type="submit" id="telegram-btn" class="filter-btn active" style="width:100%; padding:15px;">
                 <span data-i18n="sendOrderTelegram">Send Order via Telegram</span>
             </button>
         </form>
     </section>
-
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="business-hours">
-                <h4 data-i18n="hoursTitle">Business Hours / የስራ ሰዓት</h4>
-                <p>Mon - Sat: 9:00 AM - 7:00 PM (3:00 - 1:00 Local Time)</p>
-                <p>Sunday: Closed / እሁድ ዝግ ነው</p>
+<section id="about-us" class="about-section">
+    <div class="about-content">
+        <h2 data-i18n="aboutTitle">About Modern Electronics</h2>
+        <p data-i18n="aboutBody">
+            Founded in Addis Ababa, Modern Electronics is dedicated to bringing the latest 
+            high-quality technology to our community. We provide genuine products with 
+            reliable delivery and exceptional customer support.
+        </p>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <p data-i18n="statYears">Years Experience</p>
             </div>
-            <div class="social-links">
-                <a href="https://t.me/YourUsername" target="_blank" class="social-icon">Telegram</a>
-                <a href="#" class="social-icon">Facebook</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Modern Electronics Ethiopia. All rights reserved.</p>
-                <a href="javascript:void(0)" onclick="showLogin()" class="admin-link">Owner Access</a>
+            <div class="stat-item">
+                <span class="stat-number">1k+</span>
+                <p data-i18n="statClients">Happy Clients</p>
             </div>
         </div>
+    </div>
+</section>
+    <footer class="main-footer">
+        <div class="payment-methods">
+            <h4 data-i18n="paymentTitle">Accepted Payments</h4>
+            <div class="payment-icons">
+                <div class="pay-item"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Telebirr_logo.png" alt="Telebirr"><span>Telebirr</span></div>
+                <div class="pay-item"><img src="https://www.combanketh.et/img/logo.png" alt="CBE"><span>CBE Birr</span></div>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="javascript:void(0)" onclick="openModal('privacy-modal')">Privacy Policy</a> | 
+            <a href="javascript:void(0)" onclick="openModal('terms-modal')">Terms of Service</a>
+        </div>
+        <p>&copy; 2026 Modern Electronics Ethiopia. <a href="javascript:void(0)" onclick="showLogin()" style="color:gray;">Admin</a></p>
     </footer>
 
-    <div id="login-modal" style="display:none;" class="modal">
-        <div class="modal-content">
-            <h3 data-i18n="adminLogin">Owner Login</h3>
-            <input type="password" id="admin-pass" placeholder="Password">
-            <button onclick="checkPassword()">Unlock</button>
-            <button onclick="document.getElementById('login-modal').style.display='none'">Cancel</button>
+    <div id="receipt-modal" class="modal" style="display:none;">
+        <div class="modal-content receipt-box">
+            <h2 data-i18n="receiptTitle">Official Receipt</h2>
+            <p id="receipt-date"></p><hr>
+            <div id="receipt-items"></div><hr>
+            <div class="receipt-total"><strong data-i18n="total">Total:</strong> <span id="receipt-total-price"></span></div>
+            <button onclick="closeModal('receipt-modal')" class="filter-btn active">Done</button>
+            <button onclick="window.print()" class="filter-btn">Print</button>
         </div>
     </div>
 
+    <a href="#" target="_blank" class="floating-support" id="telegram-support">
+        <div class="support-label" data-i18n="supportLabel">Chat with us</div>
+        <svg viewBox="0 0 16 16" fill="white" width="30"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.103-.022.315.086.1.327q-.413.462-2.342 2.223c-.301.272-.559.587-.544.887.013.257.227.512.693.66l.15.045c.43.14.9.284 1.357.307.446.023.893-.058 1.135-.188a3.3 3.3 0 0 0 .582-.39q.3-.26.63-.695.747-1.027 1.28-3.146c.143-.566.075-.982-.206-1.24-.28-.258-.755-.312-1.057-.312z"/></svg>
+    </a>
+
     <script src="script.js"></script>
-	
-	
-	<div id="offer-modal" class="modal" style="display:none;">
-    <div class="modal-content offer-box">
-        <span class="close-offer" onclick="closeModal('offer-modal')">&times;</span>
-        <div class="offer-icon">🎁</div>
-        <h2 data-i18n="offerTitle">Special Gift!</h2>
-        <p data-i18n="offerBody">Order within the next 30 minutes and get 10% off your first delivery!</p>
-        <div class="promo-code">PROMO: MODERN10</div>
-        <button onclick="closeModal('offer-modal')" class="filter-btn active" style="width:100%">Claim Now / አሁን ተጠቀም</button>
-    </div>
-</div>
 </body>
 </html>
