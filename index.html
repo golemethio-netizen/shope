@@ -1,116 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Modern Electronics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <title>Golem E-Store</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Golem E-Commerce</h1>
+        <div id="cart-count">Cart: 0</div>
+    </header>
 
-    <nav class="main-header">
-        <div class="header-left">
-            <h2 data-i18n="title">Modern Electronics</h2>
-            <div class="status-indicator">
-                <span id="shop-status-dot"></span>
-                <span id="shop-status-text">...</span>
-            </div>
-        </div>
-        <div class="nav-controls">
-            <div class="lang-switcher">
-                <button onclick="changeLanguage('en')">EN</button>
-                <button onclick="changeLanguage('am')">አማርኛ</button>
-            </div>
-            <button id="theme-toggle" onclick="toggleDarkMode()">🌙</button>
-            <div class="cart-status">
-                <span data-i18n="cart">Cart</span>: <span id="cart-count">0</span>
-            </div>
-        </div>
-    </nav>
+    <main id="product-list">
+        </main>
 
-    <div class="search-filter-bar">
-        <input type="text" id="product-search" data-i18n-placeholder="searchPlaceholder" placeholder="Search..." oninput="handleSearch()">
-        <div class="filter-container">
-            <button class="filter-btn active" onclick="filterProducts('all')" data-i18n="catAll">All</button>
-            <button class="filter-btn" onclick="filterProducts('phones')" data-i18n="catPhones">Phones</button>
-            <button class="filter-btn" onclick="filterProducts('laptops')" data-i18n="catLaptops">Laptops</button>
-        </div>
-    </div>
-
-    <main id="product-grid"></main>
-
-    <section id="order-section">
-        <h2 data-i18n="orderTitle">Order Details</h2>
-        <form id="contact-form" onsubmit="handleFormSubmit(event)">
-            <input type="text" id="customer-name" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
-            <input type="text" id="customer-location" data-i18n-placeholder="locPlaceholder" placeholder="Delivery Location" required>
-            <input type="hidden" id="hidden-items-input">
-            <div id="order-summary"></div>
-            <button type="submit" id="telegram-btn" class="filter-btn active" style="width:100%; padding:15px;">
-                <span data-i18n="sendOrderTelegram">Send Order via Telegram</span>
-            </button>
-        </form>
-    </section>
-<section id="about-us" class="about-section">
-    <div class="about-content">
-        <h2 data-i18n="aboutTitle">About Modern Electronics</h2>
-        <p data-i18n="aboutBody">
-            Founded in Addis Ababa, Modern Electronics is dedicated to bringing the latest 
-            high-quality technology to our community. We provide genuine products with 
-            reliable delivery and exceptional customer support.
-        </p>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="stat-number">5+</span>
-                <p data-i18n="statYears">Years Experience</p>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">1k+</span>
-                <p data-i18n="statClients">Happy Clients</p>
-            </div>
-        </div>
-    </div>
-</section>
-    <footer class="main-footer">
-        <div class="payment-methods">
-            <h4 data-i18n="paymentTitle">Accepted Payments</h4>
-            <div class="payment-icons">
-                <div class="pay-item"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Telebirr_logo.png" alt="Telebirr"><span>Telebirr</span></div>
-                <div class="pay-item"><img src="https://www.combanketh.et/img/logo.png" alt="CBE"><span>CBE Birr</span></div>
-            </div>
-        </div>
-        <div class="footer-links">
-            <a href="javascript:void(0)" onclick="openModal('privacy-modal')">Privacy Policy</a> | 
-            <a href="javascript:void(0)" onclick="openModal('terms-modal')">Terms of Service</a>
-        </div>
-        <p>&copy; 2026 Modern Electronics Ethiopia. <a href="javascript:void(0)" onclick="showLogin()" style="color:gray;">Admin</a></p>
-    </footer>
-
-    <div id="receipt-modal" class="modal" style="display:none;">
-        <div class="modal-content receipt-box">
-            <h2 data-i18n="receiptTitle">Official Receipt</h2>
-            <p id="receipt-date"></p><hr>
-            <div id="receipt-items"></div><hr>
-            <div class="receipt-total"><strong data-i18n="total">Total:</strong> <span id="receipt-total-price"></span></div>
-            <button onclick="closeModal('receipt-modal')" class="filter-btn active">Done</button>
-            <button onclick="window.print()" class="filter-btn">Print</button>
-        </div>
-    </div>
-
-    <a href="#" target="_blank" class="floating-support" id="telegram-support">
-        <div class="support-label" data-i18n="supportLabel">Chat with us</div>
-        <svg viewBox="0 0 16 16" fill="white" width="30"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.103-.022.315.086.1.327q-.413.462-2.342 2.223c-.301.272-.559.587-.544.887.013.257.227.512.693.66l.15.045c.43.14.9.284 1.357.307.446.023.893-.058 1.135-.188a3.3 3.3 0 0 0 .582-.39q.3-.26.63-.695.747-1.027 1.28-3.146c.143-.566.075-.982-.206-1.24-.28-.258-.755-.312-1.057-.312z"/></svg>
-    </a>
-
-    <script src="./script.js" defer></script>
+    <script src="script.js"></script>
 </body>
-
-  
 </html>
-
-
-
-
-
-
